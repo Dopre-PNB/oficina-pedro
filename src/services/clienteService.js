@@ -7,7 +7,7 @@ function criarErro(mensagem, status) {
   return erro
 }
 
-function validarDadosCadastro(dados) {
+function validarDadosCadastro(dados = {}) {
   const nome = dados.nome?.trim()
   const email = dados.email?.trim().toLowerCase()
   const senha = dados.senha
@@ -16,7 +16,7 @@ function validarDadosCadastro(dados) {
   const modeloVeiculo = dados.modeloVeiculo?.trim()
   const quilometragem = Number(dados.quilometragem)
 
-  if (!nome || !email || !senha || !telefone || !placa || !modeloVeiculo || dados.quilometragem === undefined) {
+  if (!nome || !email || !senha || !telefone || !placa || !modeloVeiculo || dados.quilometragem === undefined || dados.quilometragem === null || dados.quilometragem === '') {
     throw criarErro('Preencha todos os campos do cliente', 400)
   }
 
